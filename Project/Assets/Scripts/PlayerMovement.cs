@@ -16,15 +16,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Camera")]
     public float rotationSpeed = 5;
     [Header("Physics")]
-    public float speed;
-    public float defaultSpeed;
     private float vertical;
     private float horizontal;
     private Rigidbody body;
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
-    private bool isGrounded;
+    public bool canJump = true;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -44,11 +39,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (physicsBased == true && allowedToMove)
         {
-            //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-            isGrounded = true;
             vertical = Input.GetAxis("Forwards");
             horizontal = Input.GetAxis("Sideways");
-            Vector3 velocity = (transform.forward * vertical) * speed * Time.fixedDeltaTime;
+            Vector3 velocity = (transform.forward * vertical) * moveSpeed * Time.fixedDeltaTime;
             float newSpeed = moveSpeed;
             float newJump = JumpStrength;
             if (newSpeed > 0)
@@ -69,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
                     //body.AddForce((transform.right * horizontal + transform.forward * vertical) * moveSpeed * Time.fixedDeltaTime);
                     velocity = (transform.right * horizontal + transform.forward * vertical) * (newSpeed * 100) * Time.fixedDeltaTime;
                 }
-                if (Input.GetAxis("Jump") != 0 && jumpCooldown == 0 && isGrounded == true)
+                if (Input.GetAxis("Jump") != 0 && jumpCooldown == 0 && canJump == true)
                 {
                     body.AddForce(transform.up * (newJump * 1000));
                     jumpCooldown = 10000;
