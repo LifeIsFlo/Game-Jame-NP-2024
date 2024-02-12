@@ -57,7 +57,7 @@ InputManager:
     m_Name: PickUp
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
+    negativeButton: e
     positiveButton: e
     altNegativeButton: 
     altPositiveButton: 
