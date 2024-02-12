@@ -6,10 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("General Stuff")]
     [SerializeField] private bool allowedToMove = true;
-    Rigidbody rigidB;
     [SerializeField]
     float moveSpeed = 5;
-    public bool physicsBased = false;
     [Header("Jumping")]
     public float JumpStrength = 30;
     public float jumpCooldown = 0f;
@@ -26,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody>();
         rotationSpeed = gameObject.GetComponentInChildren<CameraMovement>().rotationSpeed;
         Cursor.visible = false;
-        rigidB = GetComponent<Rigidbody>();
     }
     void Update()
     {
@@ -37,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (physicsBased == true && allowedToMove)
+        if (allowedToMove)
         {
             vertical = Input.GetAxis("Forwards");
             horizontal = Input.GetAxis("Sideways");
@@ -48,18 +45,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (Input.GetAxis("Forwards") != 0 && Input.GetAxis("Sideways") == 0)
                 {
-                    //body.AddForce((transform.forward * vertical) * moveSpeed * Time.fixedDeltaTime);
                     velocity = (transform.forward * vertical) * (newSpeed * 100) * Time.fixedDeltaTime;
                 }
                 if (Input.GetAxis("Sideways") != 0 && Input.GetAxis("Forwards") == 0)
                 {
-                    //
-                    //body.AddForce((transform.right * horizontal) * moveSpeed * Time.fixedDeltaTime);
                     velocity = (transform.right * horizontal) * (newSpeed * 100) * Time.fixedDeltaTime;
                 }
                 if (Input.GetAxis("Sideways") != 0 && Input.GetAxis("Forwards") != 0)
                 {
-                    //body.AddForce((transform.right * horizontal + transform.forward * vertical) * moveSpeed * Time.fixedDeltaTime);
                     velocity = (transform.right * horizontal + transform.forward * vertical) * (newSpeed * 100) * Time.fixedDeltaTime;
                 }
                 if (Input.GetAxis("Jump") != 0 && jumpCooldown == 0 && canJump == true)
@@ -75,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         jumpCooldown = 0;
-        rigidB.angularVelocity = new Vector3(0f, rigidB.velocity.y, rigidB.velocity.z);
+        body.angularVelocity = new Vector3(0f, body.velocity.y, body.velocity.z);
     }
 }
 
