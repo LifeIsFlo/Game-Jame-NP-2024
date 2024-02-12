@@ -21,22 +21,26 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetButtonDown("PauseKey"))
         {
-            Debug.Log("Paused");
-            if (isPaused)
-            {
-                Time.timeScale = 1;
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-            else
-            {
-                Time.timeScale = 0;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            FindObjectOfType<CameraMovement>().cameraMoves = isPaused;
-            isPaused = !isPaused;
-            pauseMenu.SetActive(isPaused);
+            Pause();
         }
+    }
+    public void Pause()
+    {
+        Debug.Log("Paused");
+        if (isPaused)
+        {
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        FindObjectOfType<CameraMovement>().cameraMoves = isPaused;
+        isPaused = !isPaused;
+        pauseMenu.SetActive(isPaused);
     }
 }
