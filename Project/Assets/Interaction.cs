@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    public GameObject brush;
-
-    Transform player;
-    Transform hand;
+    public Transform player;
+    public Transform hand;
 
     public float maxDistance;
     public LayerMask pickUpAble;
@@ -32,7 +30,7 @@ public class Interaction : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, pickUpAble))
         {
-            
+            hit.transform.parent = hand;
         }
     }
 }
