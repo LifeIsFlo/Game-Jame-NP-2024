@@ -35,6 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6135991108137848453}
+  - {fileID: 2381317652235096924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5327246313714417269
@@ -151,17 +152,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToMove: 1
   moveSpeed: 2.5
-  physicsBased: 1
   JumpStrength: 0.35
   jumpCooldown: 0
   rotationSpeed: 10
-  speed: 0
-  defaultSpeed: 0
-  groundCheck: {fileID: 0}
-  groundDistance: 0.4
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
+  canJump: 1
+--- !u!1 &3211583487607156474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2381317652235096924}
+  m_Layer: 0
+  m_Name: hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2381317652235096924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211583487607156474}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2730692586961774122}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8430760153500770179
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,6 +200,7 @@ GameObject:
   - component: {fileID: 5124667306413695107}
   - component: {fileID: 8276310110997979996}
   - component: {fileID: 965623951873663049}
+  - component: {fileID: 1628914891927312442}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -399,3 +425,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 7
   cameraMoves: 1
+--- !u!114 &1628914891927312442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430760153500770179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c42aaea0bee80d4289f86dc9f310f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2730692586961774122}
+  hand: {fileID: 2381317652235096924}
+  maxDistance: 0
+  pickUpAble:
+    serializedVersion: 2
+    m_Bits: 0
