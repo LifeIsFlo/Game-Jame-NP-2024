@@ -7,19 +7,19 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     public Transform player;
-
-    public TMP_Text lookText;
-
-    public bool sees;
-
     public Transform hand;
-
-    public float lookRayTime = .1f;
 
     Transform current;
 
+    public TMP_Text lookText;
+
     public float maxDistance;
+    public float lookRayTime = .1f;
+
     public LayerMask pickUpAble;
+
+    bool hasSomething;
+    public bool sees;
 
     string currentName;
 
@@ -94,12 +94,16 @@ public class Interaction : MonoBehaviour
             current = null;
             t.GetComponent<IInteractable>().Drop();
         }
+
+        hasSomething = false;
+
         RaycastHit hit;
         if(Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, pickUpAble))
         {
             hit.transform.parent = hand;
             hit.transform.GetComponent<IInteractable>().PickUp();
             current = hit.transform;
+            hasSomething = true;
             Debug.Log("pickup");
         }
     }
