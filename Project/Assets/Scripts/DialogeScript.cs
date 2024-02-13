@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class DialogeScript : MonoBehaviour
 {
+    public AudioClip[] testClips;
     //Objects n stuff
     [SerializeField] private GameObject audioSource;
     [SerializeField] private GameObject dialogeBox;
@@ -48,6 +50,7 @@ public class DialogeScript : MonoBehaviour
         //This how you call these things
 
         //PlayDialoge(new string[] {"Dia1","Dia2","Dia3","\"Test Audiok\"","Dia5","Dia6"},new string[] {"Name1","Name2","Name3","Name4","Name5","Name6"},new AudioClip[] {testAudio,null,testAudio,testAudio,testAudio,testAudio}, new float[] {30f,10,10,10,10,10});
+        PlayDialoge(new string[] { "Dia1", "Dia2", "Dia3", "\"Test Audiok\"", "Dia5", "Dia6" }, new string[] { "Name1", "Name2", "Name3", "Name4", "Name5", "Name6" }, testClips, new float[] { 30f, 10, 10, 10, 10, 10 });
         //PlayVoiceline(testAudio,true);
     }
 
@@ -68,6 +71,7 @@ public class DialogeScript : MonoBehaviour
             //Does an array of dialoges
             if (currentIndex < currentAudio.Length)
             {
+                
                 if (timeTillNextDial < 0)
                 {
                     PlayText(currentText[currentIndex], currentNames[currentIndex]);
