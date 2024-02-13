@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Sack : MonoBehaviour, IInteractable
@@ -31,7 +32,7 @@ public class Sack : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
-        transform.localRotation = Quaternion.Euler(Vector3.zero);
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
         transform.localPosition = Vector3.zero;
         if (coolStarted)
         {
@@ -52,7 +53,7 @@ public class Sack : MonoBehaviour, IInteractable
 
     public void PickUp()
     {
-        GetComponent<BoxCollider>().enabled = true;
+        GetComponent<BoxCollider>().enabled = false;
         enabled = true;
         Destroy(rb);
     }
@@ -66,7 +67,8 @@ public class Sack : MonoBehaviour, IInteractable
             newSack.AddComponent<Rigidbody>();
             newSack.GetComponent<BoxCollider>().enabled = true;
             rb = newSack.GetComponent<Rigidbody>();
-            rb.AddForce(cam.forward * throwForce);
+            rb.AddForce(transform.forward * throwForce); 
+
             coolStarted = true;
         }
     }
