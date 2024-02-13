@@ -15,6 +15,7 @@ public class HandMovement : MonoBehaviour
     {
         foreach (Transform item in transform)
         {
+            item.localRotation = Quaternion.Euler(Vector3.zero);
             item.localPosition = Vector3.zero;
         }
     }

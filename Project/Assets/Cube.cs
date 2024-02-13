@@ -20,6 +20,7 @@ public class Cube : MonoBehaviour, IInteractable
     public void Drop()
     {
         this.AddComponent<Rigidbody>();
+        GetComponent<BoxCollider>().enabled = true;
         enabled = false;
     }
 
@@ -28,8 +29,14 @@ public class Cube : MonoBehaviour, IInteractable
 
     }
 
+    public string GetName()
+    {
+        return "Cube";
+    }
+
     public void PickUp()
     {
+        GetComponent<BoxCollider>().enabled = false;
         Destroy(GetComponent<Rigidbody>());
         enabled = true;
     }
