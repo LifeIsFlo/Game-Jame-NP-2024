@@ -16,6 +16,8 @@ public class DialogeScript : MonoBehaviour
     private int currentIndex = 0;
     private float timeTillNextDial;
     private float[] currentDialogeTimes;
+    private GameObject currentSource;
+    private GameObject sourceEmpty;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +33,21 @@ public class DialogeScript : MonoBehaviour
         {
             nameText = GameObject.Find("NameText").GetComponent<TMP_Text>();
         }
-        PlayDialoge(new string[] {"Dia1","Dia2","Dia3","\"Test Audio\"","Dia5","Dia6"},new string[] {"Name1","Name2","Name3","Name4","Name5","Name6"},new AudioClip[] {testAudio,testAudio,testAudio,testAudio,testAudio,testAudio}, new float[] {0.5f,3,10,0,1,2});
+        if(sourceEmpty == null)
+        {
+            sourceEmpty = GameObject.Find("AudioSources");
+        }
+        PlayDialoge(new string[] {"Dia1","Dia2","Dia3","\"Test Audiok\"","Dia5","Dia6"},new string[] {"Name1","Name2","Name3","Name4","Name5","Name6"},new AudioClip[] {testAudio,testAudio,testAudio,testAudio,testAudio,testAudio}, new float[] {10f,10,10,10,10,10});
     }
 
     private void Update()
     {
+        if (Input.GetButtonDown("SkipDialoge"))
+        {
+            Debug.Log("Skipped Dialoge");
+            timeTillNextDial = -1;
+            Destroy(currentSource);
+        }
         timeTillNextDial -= Time.deltaTime;
         if (currentIndex < currentAudio.Length)
         {
@@ -78,6 +90,8 @@ public class DialogeScript : MonoBehaviour
             source.clip = audio;
             source.Play();
             source.gameObject.GetComponent<TimeKillScript>().currentTime = audio.length;
+            currentSource = source.gameObject;
+            currentSource.transform.parent = sourceEmpty.transform;
         }
     }
 }
