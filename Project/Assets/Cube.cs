@@ -28,6 +28,11 @@ public class Cube : MonoBehaviour, IInteractable
 
     }
 
+    public string GetName()
+    {
+        return "Cube";
+    }
+
     public void PickUp()
     {
         Destroy(GetComponent<Rigidbody>());
