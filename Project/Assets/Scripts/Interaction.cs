@@ -90,8 +90,6 @@ public class Interaction : MonoBehaviour
     {
         foreach (Transform t in hand)
         {
-            t.parent = null;
-            current = null;
             t.GetComponent<IInteractable>().Drop();
         }
 
