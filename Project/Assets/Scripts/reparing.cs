@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class reparing : MonoBehaviour
 {
-    public GameObject tree;
     public GameObject log;
 
     public Canvas canvas;
@@ -70,10 +69,9 @@ public class reparing : MonoBehaviour
             }
                 if (treelife == 0)
                 {
-                Instantiate(tree, transform.position, Quaternion.identity);
                 Instantiate(log, transform.position, Quaternion.identity);
-
-                Destroy(tree);
+        
+                Destroy(gameObject);
                 canvas.gameObject.SetActive(false);
                     text.gameObject.SetActive(false);
                     isTiming = false;
