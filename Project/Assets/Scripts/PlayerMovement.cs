@@ -63,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
                     jumpCooldown = 10000;
                 }
             }
-            Debug.Log(velocity);
             if(velocity != new Vector3 (0, 0, 0) && timeTillSound < 0 && jumpCooldown <= 0)
             {
                 FootstepSound();
