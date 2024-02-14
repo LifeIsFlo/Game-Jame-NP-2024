@@ -5,6 +5,7 @@ using UnityEngine;
 public interface IInteractable
 {
     public void Drop();
-    void PickUp();
-    void Use();
+    public void PickUp();
+    public void Use();
+    public string GetName();
 }
