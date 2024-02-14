@@ -22,8 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         rotationSpeed = gameObject.GetComponentInChildren<CameraMovement>().rotationSpeed;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+
     }
     void Update()
     {
