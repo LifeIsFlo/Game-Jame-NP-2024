@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject audioSourceEmpty;
     private bool isPaused = false;
     // Start is called before the first frame update
     void Start()
@@ -12,6 +13,10 @@ public class PauseManager : MonoBehaviour
         if (pauseMenu == null)
         {
             pauseMenu = GameObject.Find("PauseMenu");
+        }
+        if(audioSourceEmpty == null)
+        {
+            audioSourceEmpty = GameObject.Find("AudioSources");
         }
         pauseMenu.SetActive(false);
     }
@@ -32,12 +37,20 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            for (int i = 0; i < audioSourceEmpty.transform.childCount; i++)
+            {
+                audioSourceEmpty.transform.GetChild(i).GetComponent<AudioSource>().Play();
+            }
         }
         else
         {
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            for (int i = 0; i < audioSourceEmpty.transform.childCount; i++)
+            {
+                audioSourceEmpty.transform.GetChild(i).GetComponent<AudioSource>().Pause();
+            }
         }
         FindObjectOfType<CameraMovement>().cameraMoves = isPaused;
         isPaused = !isPaused;
