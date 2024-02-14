@@ -3758,7 +3758,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3868,7 +3868,7 @@ ParticleSystem:
       serializedVersion: 2
       m_Bits: 4294967295
     maxCollisionShapes: 256
-    quality: 0
+    quality: 2
     voxelSize: 0.5
     collisionMessages: 0
     collidesWithDynamic: 1
@@ -4949,3 +4949,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e3fde76bf97c04f98c598703bb8d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  child: {fileID: 0}

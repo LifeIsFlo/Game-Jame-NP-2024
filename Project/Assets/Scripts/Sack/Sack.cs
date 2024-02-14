@@ -10,7 +10,7 @@ public class Sack : MonoBehaviour, IInteractable
     float elapsedCoolDown;
     bool coolStarted;
 
-    public Transform cam;
+    Transform cam;
 
     public GameObject sack;
 
@@ -27,6 +27,11 @@ public class Sack : MonoBehaviour, IInteractable
     void Start()
     {
 
+    }
+
+    private void OnEnable()
+    {
+        cam = transform.parent.parent;
     }
 
     // Update is called once per frame
@@ -62,7 +67,7 @@ public class Sack : MonoBehaviour, IInteractable
     {
         if (!coolStarted)
         {
-            var newSack = Instantiate(sack, transform.position + transform.forward, Quaternion.Euler(-90, 0, 0));
+            var newSack = Instantiate(sack, cam.position + cam.forward, Quaternion.Euler(-90, 0, 0));
             newSack.transform.parent = null;
             newSack.AddComponent<Rigidbody>();
             newSack.GetComponent<BoxCollider>().enabled = true;

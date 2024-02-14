@@ -8,10 +8,12 @@ public class SackBullet : MonoBehaviour
 
     private void OnEnable()
     {
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 10f);
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Destroy(gameObject, 2);
+
         Destroy(GetComponent<MeshFilter>());
         Destroy(GetComponent<MeshRenderer>());
         Destroy(GetComponent<Rigidbody>());
