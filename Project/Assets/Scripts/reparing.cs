@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class reparing : MonoBehaviour
 {
-    public GameObject tree; 
+    public GameObject tree;
+    public GameObject log;
 
-    private Rigidbody treeRigidbody;
     public Canvas canvas;
     public TMP_Text text;
     public Slider slider;
@@ -17,9 +17,7 @@ public class reparing : MonoBehaviour
     private bool isTiming = false;
     private bool left = true;
     void Start()
-    {
-        treeRigidbody = tree.GetComponent<Rigidbody>();
-      
+    {      
     }
 
     void Update()
@@ -72,7 +70,10 @@ public class reparing : MonoBehaviour
             }
                 if (treelife == 0)
                 {
-                treeRigidbody.useGravity = true;
+                Instantiate(tree, transform.position, Quaternion.identity);
+                Instantiate(log, transform.position, Quaternion.identity);
+
+                Destroy(tree);
                 canvas.gameObject.SetActive(false);
                     text.gameObject.SetActive(false);
                     isTiming = false;
