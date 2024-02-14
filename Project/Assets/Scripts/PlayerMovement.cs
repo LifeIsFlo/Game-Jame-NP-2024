@@ -11,19 +11,19 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jumping")]
     public float JumpStrength = 30;
     public float jumpCooldown = 0f;
-    [Header("Camera")]
-    public float rotationSpeed = 5;
     [Header("Physics")]
     private float vertical;
     private float horizontal;
     private Rigidbody body;
     public bool canJump = true;
+
+    private float rotationSpeed = 5;
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         body = GetComponent<Rigidbody>();
         rotationSpeed = gameObject.GetComponentInChildren<CameraMovement>().rotationSpeed;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
     {
