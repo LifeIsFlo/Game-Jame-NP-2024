@@ -50,15 +50,16 @@ public class DialogeScript : MonoBehaviour
         //This how you call these things
 
         //PlayDialoge(new string[] {"Dia1","Dia2","Dia3","\"Test Audiok\"","Dia5","Dia6"},new string[] {"Name1","Name2","Name3","Name4","Name5","Name6"},new AudioClip[] {testAudio,null,testAudio,testAudio,testAudio,testAudio}, new float[] {30f,10,10,10,10,10});
-        PlayDialoge(new string[] { "Dia1", "Dia2", "Dia3", "\"Test Audiok\"", "Dia5", "Dia6" }, new string[] { "Name1", "Name2", "Name3", "Name4", "Name5", "Name6" }, testClips, new float[] { 30f, 10, 10, 10, 10, 10 });
+        PlayDialoge(new string[] {null, null, "Wait! You down there! Stranger! Could you do me a favor and find my comb for me?\r\nIm going to need it to keep my hair from being tangled.\r\nit should be somewhere down there.", "Oh thank Goodness! You found my comb! Now i can untangle my hair again.", null, null }, new string[] { "Name1", "Name2", "Rapunzel", "Rapunzel", "Name5", "Name6" }, testClips, new float[] { 0.5f, 25f, 10, 5f, 7.5f, 0.5f });
         //PlayVoiceline(testAudio,true);
     }
 
     private void Update()
     {
         //Skip dialoge
-        if (Input.GetButtonDown("SkipDialoge"))
+        if (Input.GetButtonDown("SkipDialoge") && dialogeText.text != "")
         {
+            Debug.Log("Skipped Dialoge");
             SkipDialoge();
         }
 
@@ -107,8 +108,18 @@ public class DialogeScript : MonoBehaviour
     public void PlayText(string text,string name)
     {
         //Sets the text
-        dialogeText.text = text;
-        nameText.text = name;
+        if(text != null)
+        {
+            dialogeBox.SetActive(true);
+            dialogeText.text = text;
+            nameText.text = name;
+        }
+        else
+        {
+            dialogeBox.SetActive(false);
+            dialogeText.text = "";
+            nameText.text = "";
+        }
     }
     public void PlayVoiceline(AudioClip audio,bool skippable)
     {
@@ -128,7 +139,6 @@ public class DialogeScript : MonoBehaviour
     {
         if (canSkip)
         {
-            Debug.Log("Skipped Dialoge");
             timeTillNextDial = -1;
             Destroy(currentSource);
         }
