@@ -19,6 +19,7 @@ public class reparing : MonoBehaviour
     void Start()
     {
         treeRigidbody = tree.GetComponent<Rigidbody>();
+      
     }
 
     void Update()
