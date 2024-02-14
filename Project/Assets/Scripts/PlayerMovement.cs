@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,23 +17,25 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private Rigidbody body;
     public bool canJump = true;
-
-    private float rotationSpeed = 5;
+    [Header("Sound")]
+    [SerializeField] private GameObject audioSource;
+    [SerializeField] private AudioClip footstepSound;
+    [SerializeField] private AudioMixerGroup group;
+    [SerializeField] private float timeBetweenFoot;
+    private float timeTillSound;
+    private GameObject sourceEmpty;
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        rotationSpeed = gameObject.GetComponentInChildren<CameraMovement>().rotationSpeed;
-
-    }
-    void Update()
-    {
-        if (gameObject.GetComponentInChildren<CameraMovement>().cameraMoves == true)
+        if (sourceEmpty == null)
         {
-            transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * rotationSpeed);
+            sourceEmpty = GameObject.Find("AudioSources");
         }
+
     }
     private void FixedUpdate()
     {
+        timeTillSound -= Time.deltaTime;
         if (allowedToMove)
         {
             vertical = Input.GetAxis("Forwards");
@@ -60,6 +63,10 @@ public class PlayerMovement : MonoBehaviour
                     jumpCooldown = 10000;
                 }
             }
+            if(velocity != new Vector3 (0, 0, 0) && timeTillSound < 0 && jumpCooldown <= 0)
+            {
+                FootstepSound();
+            }
             velocity.y = body.velocity.y;
             body.velocity = velocity;
         }
@@ -68,6 +75,20 @@ public class PlayerMovement : MonoBehaviour
     {
         jumpCooldown = 0;
         body.angularVelocity = new Vector3(0f, body.velocity.y, body.velocity.z);
+    }
+    private void FootstepSound()
+    {
+        //Spawns an audio source and makes it play stuff
+        if (audioSource != null)
+        {
+            AudioSource source = Instantiate(audioSource).GetComponent<AudioSource>();
+            source.clip = footstepSound;
+            source.outputAudioMixerGroup = group;
+            source.Play();
+            source.gameObject.GetComponent<TimeKillScript>().currentTime = footstepSound.length;
+            source.transform.parent = sourceEmpty.transform;
+            timeTillSound = timeBetweenFoot;
+        }
     }
 }
 

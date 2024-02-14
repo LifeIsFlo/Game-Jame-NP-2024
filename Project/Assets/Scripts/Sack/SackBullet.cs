@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SackBullet : MonoBehaviour
 {
+    public ChildSleep child;
+
     private void OnEnable()
     {
         Destroy(gameObject, 2);
@@ -14,5 +16,10 @@ public class SackBullet : MonoBehaviour
         Destroy(GetComponent<MeshRenderer>());
         Destroy(GetComponent<Rigidbody>());
         transform.GetChild(0).gameObject.SetActive(true);
+
+        if (child)
+        {
+            child.ShowZZZZZZZZ();
+        }
     }
 }
