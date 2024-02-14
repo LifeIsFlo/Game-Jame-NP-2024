@@ -28,20 +28,9 @@ public class CameraMovement : MonoBehaviour
         }
         if (spins)
         {
-            transform.eulerAngles = new Vector3(rotationX, transform.rotation.eulerAngles.y + 1, 0);
+            player.eulerAngles = new Vector3(0, player.rotation.eulerAngles.y + 1, 0);
         }
         //Actual Code:
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (cameraMoves == true)
-            {
-                cameraMoves = false;
-            }
-            else
-            {
-                cameraMoves = true;
-            }
-        }
         if (Input.GetKeyDown(KeyCode.C))
         {
             if (cameraMoves == true)
