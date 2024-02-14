@@ -22,7 +22,7 @@ public class DialogeScript : MonoBehaviour
     private float[] currentDialogeTimes;
     private GameObject currentSource;
     private GameObject sourceEmpty;
-    bool canSkip;
+    private bool canSkip;
 
 
     void Start()
@@ -57,11 +57,9 @@ public class DialogeScript : MonoBehaviour
     private void Update()
     {
         //Skip dialoge
-        if (Input.GetButtonDown("SkipDialoge") && canSkip)
+        if (Input.GetButtonDown("SkipDialoge"))
         {
-            Debug.Log("Skipped Dialoge");
-            timeTillNextDial = -1;
-            Destroy(currentSource);
+            SkipDialoge();
         }
 
         //Otherwise you will get an error if you dont have any dialoge
@@ -74,6 +72,7 @@ public class DialogeScript : MonoBehaviour
                 
                 if (timeTillNextDial < 0)
                 {
+                    SkipDialoge();
                     PlayText(currentText[currentIndex], currentNames[currentIndex]);
                     if (currentAudio[currentIndex] != null)
                     {
@@ -104,6 +103,7 @@ public class DialogeScript : MonoBehaviour
         currentDialogeTimes = dialogeTime;
         dialogeBox.SetActive(true);
     }
+
     public void PlayText(string text,string name)
     {
         //Sets the text
@@ -122,6 +122,15 @@ public class DialogeScript : MonoBehaviour
             currentSource = source.gameObject;
             currentSource.transform.parent = sourceEmpty.transform;
             canSkip = skippable;
+        }
+    }
+    public void SkipDialoge()
+    {
+        if (canSkip)
+        {
+            Debug.Log("Skipped Dialoge");
+            timeTillNextDial = -1;
+            Destroy(currentSource);
         }
     }
 }
