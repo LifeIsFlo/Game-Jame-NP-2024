@@ -7,6 +7,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject audioSourceEmpty;
     private bool isPaused = false;
+    public bool canPause = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("PauseKey"))
+        if (Input.GetButtonDown("PauseKey") && canPause)
         {
             Pause();
         }

@@ -54,7 +54,6 @@ public class Interaction : MonoBehaviour
         if (!sees)
         {
             lookText.transform.parent.gameObject.SetActive(false);
-
         }
         else
         {
