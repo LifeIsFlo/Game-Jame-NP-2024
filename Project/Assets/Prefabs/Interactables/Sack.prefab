@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32fa63fe0a0e47448a4473ea68d76e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolDown: 0
   cam: {fileID: 0}
-  sack: {fileID: 3456118442636123229}
+  sack: {fileID: 6138430368324546880, guid: 3554b70ae5699f248b2ee547b7db4eb1, type: 3}
   throwForce: 1000
