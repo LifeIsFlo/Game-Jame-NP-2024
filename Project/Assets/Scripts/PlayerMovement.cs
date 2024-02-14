@@ -16,20 +16,10 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private Rigidbody body;
     public bool canJump = true;
-
-    private float rotationSpeed = 5;
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        rotationSpeed = gameObject.GetComponentInChildren<CameraMovement>().rotationSpeed;
 
-    }
-    void Update()
-    {
-        if (gameObject.GetComponentInChildren<CameraMovement>().cameraMoves == true)
-        {
-            transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * rotationSpeed);
-        }
     }
     private void FixedUpdate()
     {

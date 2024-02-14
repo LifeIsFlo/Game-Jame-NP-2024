@@ -8,11 +8,13 @@ public class CameraMovement : MonoBehaviour
     public bool cameraMoves = true;
     private float rotationX = 0.0f;
     bool spins = false;
+    private Transform player;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        player = transform.parent;
     }
 
     // Update is called once per frame
@@ -57,9 +59,15 @@ public class CameraMovement : MonoBehaviour
         }
         if (cameraMoves == true)
         {
+            player.Rotate(Vector3.up, Input.GetAxis("Mouse X") * rotationSpeed);
             rotationX -= rotationSpeed * Input.GetAxis("Mouse Y");
             rotationX = Mathf.Clamp(rotationX, -70, 70);
             transform.eulerAngles = new Vector3(rotationX, transform.rotation.eulerAngles.y, 0);
         }
+    }
+
+    public void ChangeSensitivity(float value)
+    {
+        rotationSpeed = value;
     }
 }
