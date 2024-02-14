@@ -4,18 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 public class reparing : MonoBehaviour
 {
+    public GameObject tree; 
+
+    private Rigidbody treeRigidbody;
     public Canvas canvas;
     public TMP_Text text;
     public Slider slider;
-    [SerializeField]private float decreaseRate = 0.005f;
-    [SerializeField]private int minPercentage = 40;
+    [SerializeField] private float decreaseRate = 0.005f;
+    [SerializeField] private int minPercentage = 40;
     [SerializeField] private int maxPercentage = 60;
-    private float treelife = 5;
-
+    public float treelife = 5;
     private bool isTiming = false;
     private bool left = true;
     void Start()
     {
+        treeRigidbody = tree.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -50,34 +53,42 @@ public class reparing : MonoBehaviour
 
 
 
-            if (slider.value > ((slider.maxValue - slider.minValue) / 100f)*minPercentage && slider.value < ((slider.maxValue - slider.minValue) / 100f) * maxPercentage)
+            if (slider.value > ((slider.maxValue - slider.minValue) / 100f) * minPercentage && slider.value < ((slider.maxValue - slider.minValue) / 100f) * maxPercentage)
             {
                 text.gameObject.SetActive(true);
+            }
 
-                if (Input.GetKeyUp(KeyCode.E))
+            //cheat 
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                treelife -= 5f;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                treelife -= 1f;
+                Debug.Log("Hit!");
+            }
+                if (treelife == 0)
                 {
-                    treelife -= 1f;
-                    Debug.Log("Hit!");
-
-                    if (treelife ==0)
-                    {
-                        canvas.gameObject.SetActive(false);
-                        text.gameObject.SetActive(false);
-                        isTiming = false;
-                        Debug.Log("Slider op nul!");
-                    }
+                treeRigidbody.useGravity = true;
+                canvas.gameObject.SetActive(false);
+                    text.gameObject.SetActive(false);
+                    isTiming = false;
+                    Debug.Log("Slider op nul!");
+                    treelife += 5f;
                 }
-            }
-            if (slider.value > slider.minValue && slider.value < ((slider.maxValue - slider.minValue) / 100f) * minPercentage)
-            {
-                text.gameObject.SetActive(false);
-            }
-            if (slider.value > ((slider.maxValue - slider.minValue) / 100f) * maxPercentage && slider.value < slider.maxValue)
-            {
-                text.gameObject.SetActive(false);
-            }
-
-
+            
         }
+        if (slider.value > slider.minValue && slider.value < ((slider.maxValue - slider.minValue) / 100f) * minPercentage)
+        {
+            text.gameObject.SetActive(false);
+        }
+        if (slider.value > ((slider.maxValue - slider.minValue) / 100f) * maxPercentage && slider.value < slider.maxValue)
+        {
+            text.gameObject.SetActive(false);
+        }
+
+
     }
 }
