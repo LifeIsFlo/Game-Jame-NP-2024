@@ -53,13 +53,17 @@ public class Sack : MonoBehaviour, IInteractable
 
     public void Drop()
     {
-        
+        transform.parent = null;
+        this.AddComponent<Rigidbody>();
+        GetComponent<BoxCollider>().enabled = true;
+        enabled = false;
     }
 
-    public void Interact(Transform hand)
+    public void Interact(Transform hand, out bool hasSomething)
     {
         transform.parent = hand;
         GetComponent<BoxCollider>().enabled = false;
+        hasSomething = true;
         enabled = true;
         Destroy(rb);
     }

@@ -40,12 +40,33 @@ public class Interaction : MonoBehaviour
         {
             PickUp();
         }
-        if (Input.GetButtonDown("Use"))
+        if (Input.GetButtonDown("Use") && hasSomething)
         {
             Use();
         }
         StartCoroutine(lookUI());
         lookUIinit();
+
+        try
+        {
+            var child = hand.GetChild(0);
+            if (child)
+            {
+                current = child;
+                hasSomething = true;
+            }
+            else
+            {
+                current = null;
+                hasSomething = false;
+            }
+        }
+        catch
+        {
+            current = null;
+            hasSomething = false;
+        }
+        
     }
 
     void lookUIinit()
@@ -54,7 +75,7 @@ public class Interaction : MonoBehaviour
         {
             lookText.transform.parent.gameObject.SetActive(false);
         }
-        else
+        else if(!hasSomething)
         {
             lookText.text = $"Press E to {currentSee.GetComponent<IInteractable>().GetInteraction()} {currentSee.GetComponent<IInteractable>().GetName()}";
             lookText.transform.parent.gameObject.SetActive(true);
@@ -87,20 +108,19 @@ public class Interaction : MonoBehaviour
 
     void PickUp()
     {
-        foreach (Transform t in hand)
+        if (!hasSomething)
         {
-            t.GetComponent<IInteractable>().Drop();
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, pickUpAble))
+            {
+                bool canPick;
+                hit.transform.GetComponent<IInteractable>().Interact(hand, out canPick);
+                Debug.Log("pickup");
+            }
         }
-
-        hasSomething = false;
-
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, pickUpAble))
+        else
         {
-            hit.transform.GetComponent<IInteractable>().Interact(hand);
-            current = hit.transform;
-            hasSomething = true;
-            Debug.Log("pickup");
+            current.GetComponent<IInteractable>().Drop();
         }
     }
 }
