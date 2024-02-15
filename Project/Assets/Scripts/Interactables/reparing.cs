@@ -1,18 +1,20 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class reparing : MonoBehaviour, IInteractable
+public class reparing : MonoBehaviour
 {
     public GameObject log;
     public float speed;
     public Canvas canvas;
     public TMP_Text text;
     public Slider slider;
+    bool everStarted;
     [SerializeField] private float decreaseRate = 0.005f;
     [SerializeField] private int minPercentage = 40;
     [SerializeField] private int maxPercentage = 60;
     public float treelife = 5;
-    private bool isTiming = false;
+    public bool isTiming = false;
     private bool left = true;
     bool shouldHit;
     void Start()
@@ -20,43 +22,22 @@ public class reparing : MonoBehaviour, IInteractable
     }
 
     // IInteractable stuff
-    public void Drop()
-    {
 
-    }
-
-    public void Interact(Transform hand, out bool hasSomething)
+    public void Interact()
     {
-        hasSomething = false;
         if (!isTiming)
         {
+            everStarted = true;
             isTiming = true;
             canvas.gameObject.SetActive(true);
             slider.value = slider.maxValue;
         }
     }
 
-    public void Use()
-    {
-        
-    }
-
-    public string GetName()
-    {
-        return "Tree";
-    }
-
-    public string GetInteraction()
-    {
-        return "chop down";
-    }
-
     // Damian stuff
     void Update()
     {
-
         if (isTiming)
-
         {
             if (slider.value == slider.maxValue)
             {
@@ -87,18 +68,40 @@ public class reparing : MonoBehaviour, IInteractable
                 text.gameObject.SetActive (false);
                 shouldHit = false;
             }
-
-            if (Input.GetKeyDown(KeyCode.E) && shouldHit)
-            {
-                treelife -= 1f;
-                Debug.Log("Hit!");
-            }
             if (treelife == 0)
             {
                 Instantiate(log, transform.position + log.transform.position, log.transform.rotation);
 
                 Destroy(gameObject);
             }
+        }
+        else if(everStarted)
+        {
+            StartCoroutine(StopMiniGame());
+        }
+    }
+
+    IEnumerator StopMiniGame()
+    {
+        text.gameObject.SetActive(true);
+        text.text = "FAIL!";
+
+        yield return new WaitForSeconds(2);
+        canvas.gameObject.SetActive(false);
+    }
+
+    public void Hit()
+    {
+        Debug.Log("Hit!");
+
+        if (shouldHit)
+        {
+            treelife -= 1f;
+        }
+        else
+        {
+            isTiming = false;
+            treelife = 5f;
         }
     }
 }

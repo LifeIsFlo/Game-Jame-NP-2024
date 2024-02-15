@@ -53,7 +53,9 @@ public class Sack : MonoBehaviour, IInteractable
 
     public void Drop()
     {
-        
+        transform.parent = null;
+        this.AddComponent<Rigidbody>();
+        enabled = false;
     }
 
     public void Interact(Transform hand, out bool hasSomething)

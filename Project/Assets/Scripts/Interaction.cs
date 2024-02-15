@@ -46,6 +46,27 @@ public class Interaction : MonoBehaviour
         }
         StartCoroutine(lookUI());
         lookUIinit();
+
+        try
+        {
+            var child = hand.GetChild(0);
+            if (child)
+            {
+                current = child;
+                hasSomething = true;
+            }
+            else
+            {
+                current = null;
+                hasSomething = false;
+            }
+        }
+        catch
+        {
+            current = null;
+            hasSomething = false;
+        }
+        
     }
 
     void lookUIinit()
@@ -92,10 +113,6 @@ public class Interaction : MonoBehaviour
         {
             bool canPick;
             hit.transform.GetComponent<IInteractable>().Interact(hand, out canPick);
-            if (!hasSomething && canPick)
-            {
-                current = hit.transform;
-            }
             Debug.Log("pickup");
         }
     }

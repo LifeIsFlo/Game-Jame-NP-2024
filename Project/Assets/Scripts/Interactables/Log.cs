@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Log : MonoBehaviour, IInteractable
@@ -28,7 +29,9 @@ public class Log : MonoBehaviour, IInteractable
 
     public void Drop()
     {
-
+        transform.parent = null;
+        this.AddComponent<Rigidbody>();
+        enabled = false;
     }
 
     public void Use()

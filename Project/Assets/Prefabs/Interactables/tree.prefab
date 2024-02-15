@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3719951108200812398}
   - component: {fileID: 7421189869997969936}
   - component: {fileID: 6339216454005232745}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6455845542897353835}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 6939702108148689687}
   - component: {fileID: 6689040079757534933}
   - component: {fileID: 2641003251302211110}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1314613073074575341}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 1957143216662158444}
   - component: {fileID: 4234140007021742946}
   - component: {fileID: 8461497076526084607}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8999076189223290751}
   - component: {fileID: 5927939429603204354}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 9109596163137213960}
   - component: {fileID: 2895219459274731109}
   - component: {fileID: 1791887661129530128}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,8 +530,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4788793791095087814}
+  - component: {fileID: 5610149364099996101}
+  - component: {fileID: 8444499352603112502}
   - component: {fileID: 6243442075790452379}
-  m_Layer: 3
+  - component: {fileID: 2786949087296993942}
+  m_Layer: 6
   m_Name: tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,85 +549,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6753446262565443703}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02077961, y: -0.01868248, z: -9.214238}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.74411327, y: 0, z: 0, w: 0.66805345}
+  m_LocalPosition: {x: -0, y: 9.984345, z: -7.614888}
+  m_LocalScale: {x: 100, y: 99.99999, z: 99.99999}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8393538082286077178}
-  - {fileID: 6610571491406842687}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6243442075790452379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6753446262565443703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b20f057895091ae49afecca65551d546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  log: {fileID: 39187820226073452, guid: 0342250d4d70a0a488a111c48623da15, type: 3}
-  speed: 0.5
-  canvas: {fileID: 3951072844445022818}
-  text: {fileID: 8461497076526084607}
-  slider: {fileID: 5927939429603204354}
-  decreaseRate: 0.005
-  minPercentage: 40
-  maxPercentage: 60
-  treelife: 5
---- !u!1 &7302659173507239054
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6610571491406842687}
-  - component: {fileID: 7264460412047703465}
-  - component: {fileID: 4092966698867375955}
-  - component: {fileID: 1789981450568019277}
-  m_Layer: 3
-  m_Name: ' palm tree'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6610571491406842687
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7302659173507239054}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.7441145, y: 0, z: 0, w: 0.6680521}
-  m_LocalPosition: {x: -0, y: 9.984345, z: 1.6869346}
-  m_LocalScale: {x: 100, y: 99.99999, z: 99.99999}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4788793791095087814}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7264460412047703465
+  m_LocalEulerAnglesHint: {x: -96.166, y: 0, z: 0}
+--- !u!33 &5610149364099996101
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7302659173507239054}
+  m_GameObject: {fileID: 6753446262565443703}
   m_Mesh: {fileID: 3390558720134950976, guid: eaad1c7e288d99644b559c3c86be88db, type: 3}
---- !u!23 &4092966698867375955
+--- !u!23 &8444499352603112502
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7302659173507239054}
+  m_GameObject: {fileID: 6753446262565443703}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -662,13 +609,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1789981450568019277
+--- !u!114 &6243442075790452379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6753446262565443703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20f057895091ae49afecca65551d546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  log: {fileID: 39187820226073452, guid: 0342250d4d70a0a488a111c48623da15, type: 3}
+  speed: 0.3
+  canvas: {fileID: 3951072844445022818}
+  text: {fileID: 8461497076526084607}
+  slider: {fileID: 5927939429603204354}
+  decreaseRate: 0.005
+  minPercentage: 10
+  maxPercentage: 90
+  treelife: 5
+  isTiming: 0
+--- !u!64 &2786949087296993942
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7302659173507239054}
+  m_GameObject: {fileID: 6753446262565443703}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -696,7 +665,7 @@ GameObject:
   - component: {fileID: 3951072844445022818}
   - component: {fileID: 6067539831805223676}
   - component: {fileID: 8159901623870929508}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
