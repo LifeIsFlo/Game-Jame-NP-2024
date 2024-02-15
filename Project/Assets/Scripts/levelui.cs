@@ -21,6 +21,7 @@ public class levelui : MonoBehaviour
     
     void Start()
     {
+        ToggleLevelSelect();
     }
 
     void Update()
@@ -31,14 +32,15 @@ public class levelui : MonoBehaviour
             lvl1done = false; lvl2done = true; lvl3done = true;
         }
 
-            if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            ToggleLevelSelect();
+            //ToggleLevelSelect();
         }
     }
 
-    void ToggleLevelSelect()
+    public void ToggleLevelSelect()
     {
+        Debug.Log("I been called");
         isLevelSelectActive = !isLevelSelectActive;
 
         if (isLevelSelectActive)

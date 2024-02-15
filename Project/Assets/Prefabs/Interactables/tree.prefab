@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 100
-  m_WholeNumbers: 1
+  m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
@@ -551,7 +551,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.74411327, y: 0, z: 0, w: 0.66805345}
   m_LocalPosition: {x: -0, y: 9.984345, z: -7.614888}
-  m_LocalScale: {x: 100, y: 99.99999, z: 99.99999}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8393538082286077178}

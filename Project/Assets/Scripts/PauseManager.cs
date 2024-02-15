@@ -53,7 +53,10 @@ public class PauseManager : MonoBehaviour
                 audioSourceEmpty.transform.GetChild(i).GetComponent<AudioSource>().Pause();
             }
         }
-        FindObjectOfType<CameraMovement>().cameraMoves = isPaused;
+        if (FindObjectOfType<CameraMovement>() != null)
+        {
+            FindObjectOfType<CameraMovement>().cameraMoves = isPaused;
+        }
         isPaused = !isPaused;
         pauseMenu.SetActive(isPaused);
     }

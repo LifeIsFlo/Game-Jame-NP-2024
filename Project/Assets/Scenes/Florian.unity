@@ -1394,6 +1394,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Axe
       objectReference: {fileID: 0}
+    - target: {fileID: 7948313867236993282, guid: 9aa40b862e97ab247aad5c891350e32e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8133366532472691466, guid: 9aa40b862e97ab247aad5c891350e32e,
         type: 3}
       propertyPath: m_Mesh

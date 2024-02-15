@@ -39,9 +39,9 @@ public class reparing : MonoBehaviour
     // Damian stuff
     void Update()
     {
-        if (isTiming)
+        if (isTiming && Time.timeScale != 0)
         {
-            text.text = "Now!";
+            text.text = "Click!!";
             if (slider.value == slider.maxValue)
             {
                 left = false;
@@ -52,10 +52,12 @@ public class reparing : MonoBehaviour
             }
             if (left == false)
             {
+                Debug.Log("R" + decreaseRate / Time.deltaTime * speed);
                 slider.value -= decreaseRate / Time.deltaTime * speed;
             }
             if (left == true)
             {
+                Debug.Log("L" + decreaseRate / Time.deltaTime * speed);
                 slider.value += decreaseRate / Time.deltaTime * speed;
             }
 

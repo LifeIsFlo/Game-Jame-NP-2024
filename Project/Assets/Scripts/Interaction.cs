@@ -77,10 +77,13 @@ public class Interaction : MonoBehaviour
         }
         else if(!hasSomething)
         {
-            if (currentSee.GetComponent<Boat>() == null)
+            if(currentSee != null)
             {
-                lookText.text = $"Press E to {currentSee.GetComponent<IInteractable>().GetInteraction()} {currentSee.GetComponent<IInteractable>().GetName()}";
-                lookText.transform.parent.gameObject.SetActive(true);
+                if (currentSee.GetComponent<Boat>() == null && currentSee.GetComponent<IInteractable>() != null)
+                {
+                    lookText.text = $"Press E to {currentSee.GetComponent<IInteractable>().GetInteraction()} {currentSee.GetComponent<IInteractable>().GetName()}";
+                    lookText.transform.parent.gameObject.SetActive(true);
+                }
             }
         }
     }

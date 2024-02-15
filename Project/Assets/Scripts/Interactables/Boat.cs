@@ -7,6 +7,8 @@ public class Boat : MonoBehaviour, IInteractable
     public float woodLeft;
     public GameObject boatFix;
     [SerializeField] private AudioClip[] boatFixClips;
+    bool finished = false;
+    [SerializeField] private GameObject entireBoatScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,9 @@ public class Boat : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
-        if(woodLeft <= 0)
+        if(woodLeft <= 0 && !finished)
         {
-            BoatFixed();
+            StartCoroutine(BoatFixed());
         }
     }
 
@@ -27,11 +29,22 @@ public class Boat : MonoBehaviour, IInteractable
         
     }
 
-    public void BoatFixed()
+    IEnumerator BoatFixed()
     {
-        Destroy(gameObject);
-        boatFix.SetActive(true);
-        FindAnyObjectByType<DialogeScript>().PlayDialoge(new string[] { "Thank you for fixing my boat! I can now continue my travels." }, new string[] {"Theseus" }, boatFixClips,new float[] { boatFixClips[0].length });
+        if (!finished)
+        {
+            finished = true;
+            Debug.Log("FixBoat");
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<Collider>().enabled = false;
+            boatFix.SetActive(true);
+            FindAnyObjectByType<DialogeScript>().PlayDialoge(new string[] { "Thank you for fixing my boat! I can now continue my travels." }, new string[] { "Theseus" }, boatFixClips, new float[] { boatFixClips[0].length });
+            yield return new WaitForSeconds(boatFixClips[0].length);
+            FindAnyObjectByType<levelui>().ToggleLevelSelect();
+            FindAnyObjectByType<levelui>().ToggleLevelSelect();
+            entireBoatScene.SetActive(false);
+            Destroy(gameObject, 10);
+        }
     }
 
     public void Interact(Transform hand, out bool hasSomething)
