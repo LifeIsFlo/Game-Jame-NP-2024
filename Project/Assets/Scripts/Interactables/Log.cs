@@ -73,6 +73,7 @@ public class Log : MonoBehaviour, IInteractable
             if (boat)
             {
                 boat.AddLog();
+                canvas.SetActive(false);
                 Destroy(gameObject);
             }
         }

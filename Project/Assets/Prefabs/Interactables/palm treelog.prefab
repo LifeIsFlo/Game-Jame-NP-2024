@@ -132,7 +132,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 8
-  maxDistance: 1000
+  maxDistance: 10
 --- !u!64 &6646410602191925805
 MeshCollider:
   m_ObjectHideFlags: 0
