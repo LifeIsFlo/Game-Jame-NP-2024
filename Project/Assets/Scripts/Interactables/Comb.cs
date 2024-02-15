@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Comb : MonoBehaviour, IInteractable
@@ -39,9 +40,10 @@ public class Comb : MonoBehaviour, IInteractable
         }
     }
 
-    public void Interact(Transform hand)
+    public void Interact(Transform hand, out bool hasSomething)
     {
         transform.parent = hand;
+        hasSomething = true;
         GetComponent<BoxCollider>().enabled = false;
         enabled = true;
         transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -50,7 +52,10 @@ public class Comb : MonoBehaviour, IInteractable
 
     public void Drop()
     {
-
+        transform.parent = null;
+        this.AddComponent<Rigidbody>();
+        GetComponent<BoxCollider>().enabled = true;
+        enabled = false;
     }
 
     public void Use()
