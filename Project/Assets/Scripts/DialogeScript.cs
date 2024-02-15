@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 public class DialogeScript : MonoBehaviour
 {
     public AudioClip theseusDia;
+    public AudioClip sandDia;
     //Objects n stuff
     [SerializeField] private GameObject audioSource;
     [SerializeField] private GameObject dialogeBox;
@@ -106,7 +107,10 @@ public class DialogeScript : MonoBehaviour
         currentNames = names;
         currentAudio = audio;
         currentDialogeTimes = dialogeTime;
-        dialogeBox.SetActive(true);
+        if (text[0] != null)
+        {
+            dialogeBox.SetActive(true);
+        }
     }
 
     public void PlayText(string text,string name)
@@ -152,5 +156,10 @@ public class DialogeScript : MonoBehaviour
     {
         //        PlayDialoge(new string[] { null }, new string[] { null }, new AudioClip[] { null }, new float[] { null });
         PlayDialoge(new string[] { null }, new string[] { null }, new AudioClip[] { theseusDia }, new float[] { theseusDia.length });
+    }
+
+    public void SandStart()
+    {
+        PlayDialoge(new string[] { null }, new string[] { null }, new AudioClip[] { sandDia}, new float[] { sandDia.length });
     }
 }

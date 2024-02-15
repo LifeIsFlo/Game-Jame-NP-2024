@@ -18,6 +18,11 @@ public class Sack : MonoBehaviour, IInteractable
 
     Rigidbody rb;
 
+    private float childrenHit = 0;
+
+    public AudioClip finishHittingChildrenDialoge;
+    public GameObject entireSandScene;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -70,8 +75,9 @@ public class Sack : MonoBehaviour, IInteractable
 
     public void Use()
     {
-        if (!coolStarted)
+        if (!coolStarted && Time.timeScale != 0)
         {
+            Debug.Log("Used sack");
             var newSack = Instantiate(sack, cam.position + cam.forward, Quaternion.Euler(-90, 0, 0));
             newSack.transform.parent = null;
             newSack.AddComponent<Rigidbody>();
@@ -81,6 +87,26 @@ public class Sack : MonoBehaviour, IInteractable
 
             coolStarted = true;
         }
+    }
+    public void HitChild()
+    {
+        childrenHit++;
+        if (childrenHit >= 25)
+        {
+            StartCoroutine(HitEnoughChildren());
+        }
+    }
+
+    public IEnumerator HitEnoughChildren()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<Collider>().enabled = false;
+        FindAnyObjectByType<DialogeScript>().PlayDialoge(new string[] { null }, new string[] { null }, new AudioClip[] { finishHittingChildrenDialoge }, new float[] { finishHittingChildrenDialoge.length });
+        yield return new WaitForSeconds(finishHittingChildrenDialoge.length);
+        FindAnyObjectByType<levelui>().ToggleLevelSelect();
+        FindAnyObjectByType<levelui>().ToggleLevelSelect();
+        entireSandScene.SetActive(false);
+        FindAnyObjectByType<MusicChangeScript>().ChangeMusic();
     }
     public string GetName()
     {
