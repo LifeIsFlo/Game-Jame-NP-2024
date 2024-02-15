@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class reparing : MonoBehaviour, IInteractable
 {
     public GameObject log;
-
+    public float speed;
     public Canvas canvas;
     public TMP_Text text;
     public Slider slider;
@@ -14,6 +14,7 @@ public class reparing : MonoBehaviour, IInteractable
     public float treelife = 5;
     private bool isTiming = false;
     private bool left = true;
+    bool shouldHit;
     void Start()
     {      
     }
@@ -24,11 +25,15 @@ public class reparing : MonoBehaviour, IInteractable
 
     }
 
-    public void Interact(Transform hand)
+    public void Interact(Transform hand, out bool hasSomething)
     {
-        isTiming = true;
-        canvas.gameObject.SetActive(true);
-        slider.value = slider.maxValue;
+        hasSomething = false;
+        if (!isTiming)
+        {
+            isTiming = true;
+            canvas.gameObject.SetActive(true);
+            slider.value = slider.maxValue;
+        }
     }
 
     public void Use()
@@ -63,11 +68,11 @@ public class reparing : MonoBehaviour, IInteractable
             }
             if (left == false)
             {
-                slider.value -= decreaseRate / Time.deltaTime;
+                slider.value -= decreaseRate / Time.deltaTime * speed;
             }
             if (left == true)
             {
-                slider.value += decreaseRate / Time.deltaTime;
+                slider.value += decreaseRate / Time.deltaTime * speed;
             }
 
 
@@ -75,31 +80,25 @@ public class reparing : MonoBehaviour, IInteractable
             if (slider.value > ((slider.maxValue - slider.minValue) / 100f) * minPercentage && slider.value < ((slider.maxValue - slider.minValue) / 100f) * maxPercentage)
             {
                 text.gameObject.SetActive(true);
+                shouldHit = true;
+            }
+            else
+            {
+                text.gameObject.SetActive (false);
+                shouldHit = false;
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && shouldHit)
             {
                 treelife -= 1f;
                 Debug.Log("Hit!");
             }
             if (treelife == 0)
             {
-                Instantiate(log, transform.position, Quaternion.identity);
+                Instantiate(log, transform.position + log.transform.position, log.transform.rotation);
 
                 Destroy(gameObject);
-                isTiming = false;
-                Debug.Log("Slider op nul!");
-                treelife += 5f;
             }
-
-        }
-        if (slider.value > slider.minValue && slider.value < ((slider.maxValue - slider.minValue) / 100f) * minPercentage)
-        {
-            text.gameObject.SetActive(false);
-        }
-        if (slider.value > ((slider.maxValue - slider.minValue) / 100f) * maxPercentage && slider.value < slider.maxValue)
-        {
-            text.gameObject.SetActive(false);
         }
     }
 }

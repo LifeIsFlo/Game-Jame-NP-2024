@@ -39,9 +39,10 @@ public class Comb : MonoBehaviour, IInteractable
         }
     }
 
-    public void Interact(Transform hand)
+    public void Interact(Transform hand, out bool hasSomething)
     {
         transform.parent = hand;
+        hasSomething = true;
         GetComponent<BoxCollider>().enabled = false;
         enabled = true;
         transform.localRotation = Quaternion.Euler(0, 0, 0);

@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IInteractable
 {
     public void Drop();
-    public void Interact(Transform hand);
+    public void Interact(Transform hand, out bool hasSomething);
     public void Use();
     public string GetName();
     public string GetInteraction();

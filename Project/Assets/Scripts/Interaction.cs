@@ -36,11 +36,11 @@ public class Interaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("PickUp"))
+        if (Input.GetButtonDown("PickUp") && !hasSomething)
         {
             PickUp();
         }
-        if (Input.GetButtonDown("Use"))
+        if (Input.GetButtonDown("Use") && hasSomething)
         {
             Use();
         }
@@ -87,19 +87,11 @@ public class Interaction : MonoBehaviour
 
     void PickUp()
     {
-        foreach (Transform t in hand)
-        {
-            t.GetComponent<IInteractable>().Drop();
-        }
-
-        hasSomething = false;
-
         RaycastHit hit;
         if(Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, pickUpAble))
         {
-            hit.transform.GetComponent<IInteractable>().Interact(hand);
+            hit.transform.GetComponent<IInteractable>().Interact(hand, out hasSomething);
             current = hit.transform;
-            hasSomething = true;
             Debug.Log("pickup");
         }
     }

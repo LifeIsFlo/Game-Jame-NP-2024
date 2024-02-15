@@ -5,21 +5,25 @@ using UnityEngine;
 public class Log : MonoBehaviour, IInteractable
 {
     Rigidbody rb;
+
+    bool pickedUp = false;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (pickedUp)
+        {
+            transform.localPosition = new Vector3(0,-3,5);
+        }
     }
 
     private void OnEnable()
     {
-        rb = GetComponent<Rigidbody>();
+
     }
 
     public void Drop()
@@ -32,13 +36,16 @@ public class Log : MonoBehaviour, IInteractable
 
     }
 
-    public void Interact(Transform hand)
+    public void Interact(Transform hand, out bool hasSomething)
     {
+        rb = GetComponent<Rigidbody>();
+        Debug.Log("lol");
         transform.parent = hand;
-        GetComponent<BoxCollider>().enabled = false;
-        enabled = true;
-        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        pickedUp = true;
+        GetComponent<MeshCollider>().enabled = false;
         Destroy(rb);
+        hasSomething = true;
+        transform.localRotation = Quaternion.Euler(0, 90, 90);
     }
 
     public string GetName()
