@@ -4466,6 +4466,7 @@ GameObject:
   - component: {fileID: 1616599904}
   - component: {fileID: 1616599906}
   - component: {fileID: 1616599907}
+  - component: {fileID: 1616599908}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -4543,6 +4544,18 @@ MonoBehaviour:
     type: 3}
   closeSound: {fileID: 8300000, guid: b19c1bba58487644a9e3c20a07fc5ac7, type: 3}
   group: {fileID: 7943628026259640807, guid: 1c07ae63b5234cb43887e27a47474f5b, type: 2}
+--- !u!114 &1616599908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616599903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244af55cb359931438e14312ee9263c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1651270596
 GameObject:
   m_ObjectHideFlags: 0
