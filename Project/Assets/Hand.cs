@@ -15,7 +15,7 @@ public class Hand : MonoBehaviour
     {
         foreach (Renderer item in GetComponentsInChildren<Renderer>())
         {
-            //item.
+            item.pro
         }
     }
 }

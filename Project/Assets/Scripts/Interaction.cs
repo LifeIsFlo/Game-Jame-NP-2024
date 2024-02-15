@@ -36,7 +36,7 @@ public class Interaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("PickUp") && !hasSomething)
+        if (Input.GetButtonDown("PickUp"))
         {
             PickUp();
         }
@@ -88,10 +88,14 @@ public class Interaction : MonoBehaviour
     void PickUp()
     {
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, pickUpAble))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, pickUpAble))
         {
-            hit.transform.GetComponent<IInteractable>().Interact(hand, out hasSomething);
-            current = hit.transform;
+            bool canPick;
+            hit.transform.GetComponent<IInteractable>().Interact(hand, out canPick);
+            if (!hasSomething && canPick)
+            {
+                current = hit.transform;
+            }
             Debug.Log("pickup");
         }
     }
