@@ -17,7 +17,7 @@ public class Log : MonoBehaviour, IInteractable
     {
         if (pickedUp)
         {
-            transform.localPosition = new Vector3(0,-3,5);
+            transform.localPosition = new Vector3(0,-3,7.5f);
         }
     }
 
