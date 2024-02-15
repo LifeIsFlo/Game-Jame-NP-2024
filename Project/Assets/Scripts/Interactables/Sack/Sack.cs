@@ -56,8 +56,9 @@ public class Sack : MonoBehaviour, IInteractable
         
     }
 
-    public void PickUp()
+    public void Interact(Transform hand)
     {
+        transform.parent = hand;
         GetComponent<BoxCollider>().enabled = false;
         enabled = true;
         Destroy(rb);
@@ -80,5 +81,10 @@ public class Sack : MonoBehaviour, IInteractable
     public string GetName()
     {
         return "Bag";
+    }
+
+    public string GetInteraction()
+    {
+        return "pick up";
     }
 }

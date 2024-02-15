@@ -1,8 +1,7 @@
-
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class reparing : MonoBehaviour
+public class reparing : MonoBehaviour, IInteractable
 {
     public GameObject log;
 
@@ -19,15 +18,37 @@ public class reparing : MonoBehaviour
     {      
     }
 
+    // IInteractable stuff
+    public void Drop()
+    {
+
+    }
+
+    public void Interact(Transform hand)
+    {
+        isTiming = true;
+        canvas.gameObject.SetActive(true);
+        slider.value = slider.maxValue;
+    }
+
+    public void Use()
+    {
+        
+    }
+
+    public string GetName()
+    {
+        return "Tree";
+    }
+
+    public string GetInteraction()
+    {
+        return "chop down";
+    }
+
+    // Damian stuff
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            canvas.gameObject.SetActive(true);
-            isTiming = true;
-            slider.value = slider.maxValue;
-            treelife = 5f;
-        }
 
         if (isTiming)
 
@@ -56,29 +77,21 @@ public class reparing : MonoBehaviour
                 text.gameObject.SetActive(true);
             }
 
-            //cheat 
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                treelife -= 5f;
-            }
-
             if (Input.GetKeyDown(KeyCode.E))
             {
                 treelife -= 1f;
                 Debug.Log("Hit!");
             }
-                if (treelife == 0)
-                {
+            if (treelife == 0)
+            {
                 Instantiate(log, transform.position, Quaternion.identity);
-        
+
                 Destroy(gameObject);
-                canvas.gameObject.SetActive(false);
-                    text.gameObject.SetActive(false);
-                    isTiming = false;
-                    Debug.Log("Slider op nul!");
-                    treelife += 5f;
-                }
-            
+                isTiming = false;
+                Debug.Log("Slider op nul!");
+                treelife += 5f;
+            }
+
         }
         if (slider.value > slider.minValue && slider.value < ((slider.maxValue - slider.minValue) / 100f) * minPercentage)
         {
@@ -88,7 +101,5 @@ public class reparing : MonoBehaviour
         {
             text.gameObject.SetActive(false);
         }
-
-
     }
 }

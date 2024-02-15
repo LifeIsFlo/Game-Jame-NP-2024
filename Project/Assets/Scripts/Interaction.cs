@@ -10,6 +10,7 @@ public class Interaction : MonoBehaviour
     public Transform hand;
 
     Transform current;
+    Transform currentSee;
 
     public TMP_Text lookText;
 
@@ -20,8 +21,6 @@ public class Interaction : MonoBehaviour
 
     bool hasSomething;
     public bool sees;
-
-    string currentName;
 
     private void Awake()
     {
@@ -57,7 +56,7 @@ public class Interaction : MonoBehaviour
         }
         else
         {
-            lookText.text = $"Press E to pick up {currentName}";
+            lookText.text = $"Press E to {currentSee.GetComponent<IInteractable>().GetInteraction()} {currentSee.GetComponent<IInteractable>().GetName()}";
             lookText.transform.parent.gameObject.SetActive(true);
         }
     }
@@ -76,11 +75,12 @@ public class Interaction : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, pickUpAble))
         {
-            currentName = hit.transform.GetComponent<IInteractable>().GetName();
+            currentSee = hit.transform;
             sees = true;
         }
         else
         {
+            currentSee = null;
             sees = false;
         }
     }
@@ -97,8 +97,7 @@ public class Interaction : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, pickUpAble))
         {
-            hit.transform.parent = hand;
-            hit.transform.GetComponent<IInteractable>().PickUp();
+            hit.transform.GetComponent<IInteractable>().Interact(hand);
             current = hit.transform;
             hasSomething = true;
             Debug.Log("pickup");

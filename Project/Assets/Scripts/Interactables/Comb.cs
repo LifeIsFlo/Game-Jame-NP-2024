@@ -39,8 +39,9 @@ public class Comb : MonoBehaviour, IInteractable
         }
     }
 
-    public void PickUp()
+    public void Interact(Transform hand)
     {
+        transform.parent = hand;
         GetComponent<BoxCollider>().enabled = false;
         enabled = true;
         transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -60,5 +61,10 @@ public class Comb : MonoBehaviour, IInteractable
     public string GetName()
     {
         return "Comb";
+    }
+
+    public string GetInteraction()
+    {
+        return "pick up";
     }
 }
