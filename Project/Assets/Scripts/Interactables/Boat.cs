@@ -43,6 +43,7 @@ public class Boat : MonoBehaviour, IInteractable
             FindAnyObjectByType<levelui>().ToggleLevelSelect();
             FindAnyObjectByType<levelui>().ToggleLevelSelect();
             entireBoatScene.SetActive(false);
+            FindAnyObjectByType<MusicChangeScript>().ChangeMusic();
             Destroy(gameObject, 10);
         }
     }

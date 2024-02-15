@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244af55cb359931438e14312ee9263c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMusic: {fileID: 8300000, guid: e459420ca7b48854e882df80914b75c9, type: 3}
 --- !u!114 &49309847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,13 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4ccabba5d5397428aa16baf5dd2b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testClips:
-  - {fileID: 8300000, guid: efae46e47b01d5745ad407d033425ec4, type: 3}
-  - {fileID: 8300000, guid: 5ab01d5b9a4e82a4a98e85eb95923389, type: 3}
-  - {fileID: 8300000, guid: 4683fb9a6a0730443b671aa04315d012, type: 3}
-  - {fileID: 8300000, guid: 49842169fadb7764bba01e951fa437de, type: 3}
-  - {fileID: 8300000, guid: 67a95c2436e8c404f9ae2e8ec1d663aa, type: 3}
-  - {fileID: 8300000, guid: efae46e47b01d5745ad407d033425ec4, type: 3}
+  theseusDia: {fileID: 8300000, guid: 8d8c9034ef604ef42b344a3c4d03f294, type: 3}
   audioSource: {fileID: 5355005335566943426, guid: c8768747b1a75544eb94cc05cd28ca78,
     type: 3}
   dialogeBox: {fileID: 0}
@@ -4970,6 +4965,11 @@ PrefabInstance:
       propertyPath: entireBoatScene
       value: 
       objectReference: {fileID: 150225656}
+    - target: {fileID: 5290836240194976600, guid: 177b4182508371946afe91fa67d2208f,
+        type: 3}
+      propertyPath: boatFixClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 105ecae8e86ef524381f25d389cdd47e, type: 3}
     - target: {fileID: 5806082623523594123, guid: 177b4182508371946afe91fa67d2208f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6484,6 +6484,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 49309846}
+        m_TargetAssemblyTypeName: MusicChangeScript, Assembly-CSharp
+        m_MethodName: ChangeMusic
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: e692028477d4ac94c8ce2a6e96046314,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 49309847}
+        m_TargetAssemblyTypeName: DialogeScript, Assembly-CSharp
+        m_MethodName: TheseusStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1852678439
 GameObject:
   m_ObjectHideFlags: 0
@@ -7849,7 +7874,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5307557364034008619, guid: 1c07ae63b5234cb43887e27a47474f5b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: e692028477d4ac94c8ce2a6e96046314, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e459420ca7b48854e882df80914b75c9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

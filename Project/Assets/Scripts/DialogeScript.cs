@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 
 public class DialogeScript : MonoBehaviour
 {
-    public AudioClip[] testClips;
+    public AudioClip theseusDia;
     //Objects n stuff
     [SerializeField] private GameObject audioSource;
     [SerializeField] private GameObject dialogeBox;
@@ -146,5 +146,11 @@ public class DialogeScript : MonoBehaviour
             timeTillNextDial = -1;
             Destroy(currentSource);
         }
+    }
+
+    public void TheseusStart()
+    {
+        //        PlayDialoge(new string[] { null }, new string[] { null }, new AudioClip[] { null }, new float[] { null });
+        PlayDialoge(new string[] { null }, new string[] { null }, new AudioClip[] { theseusDia }, new float[] { theseusDia.length });
     }
 }
