@@ -39,6 +39,7 @@ public class reparing : MonoBehaviour
     {
         if (isTiming)
         {
+            text.text = "Now!";
             if (slider.value == slider.maxValue)
             {
                 left = false;
@@ -75,17 +76,12 @@ public class reparing : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if(everStarted)
-        {
-            StartCoroutine(StopMiniGame());
-        }
     }
 
     IEnumerator StopMiniGame()
     {
         text.gameObject.SetActive(true);
         text.text = "FAIL!";
-
         yield return new WaitForSeconds(2);
         canvas.gameObject.SetActive(false);
     }
@@ -102,6 +98,7 @@ public class reparing : MonoBehaviour
         {
             isTiming = false;
             treelife = 5f;
+            StartCoroutine(StopMiniGame());
         }
     }
 }

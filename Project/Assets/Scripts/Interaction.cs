@@ -75,7 +75,7 @@ public class Interaction : MonoBehaviour
         {
             lookText.transform.parent.gameObject.SetActive(false);
         }
-        else
+        else if(!hasSomething)
         {
             lookText.text = $"Press E to {currentSee.GetComponent<IInteractable>().GetInteraction()} {currentSee.GetComponent<IInteractable>().GetName()}";
             lookText.transform.parent.gameObject.SetActive(true);
@@ -108,12 +108,19 @@ public class Interaction : MonoBehaviour
 
     void PickUp()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, pickUpAble))
+        if (!hasSomething)
         {
-            bool canPick;
-            hit.transform.GetComponent<IInteractable>().Interact(hand, out canPick);
-            Debug.Log("pickup");
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, pickUpAble))
+            {
+                bool canPick;
+                hit.transform.GetComponent<IInteractable>().Interact(hand, out canPick);
+                Debug.Log("pickup");
+            }
+        }
+        else
+        {
+            current.GetComponent<IInteractable>().Drop();
         }
     }
 }

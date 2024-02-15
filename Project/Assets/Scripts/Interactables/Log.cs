@@ -19,6 +19,7 @@ public class Log : MonoBehaviour, IInteractable
         if (pickedUp)
         {
             transform.localPosition = new Vector3(0,-3,7.5f);
+            transform.localRotation = Quaternion.Euler(-20, 90, 0);
         }
     }
 
@@ -31,6 +32,7 @@ public class Log : MonoBehaviour, IInteractable
     {
         transform.parent = null;
         this.AddComponent<Rigidbody>();
+        GetComponent<MeshCollider>().enabled = true;
         enabled = false;
     }
 
@@ -43,6 +45,7 @@ public class Log : MonoBehaviour, IInteractable
     {
         rb = GetComponent<Rigidbody>();
         Debug.Log("lol");
+        enabled = true;
         transform.parent = hand;
         pickedUp = true;
         GetComponent<MeshCollider>().enabled = false;

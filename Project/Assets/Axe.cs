@@ -61,6 +61,7 @@ public class Axe : MonoBehaviour, IInteractable
     {
         transform.parent = null;
         this.AddComponent<Rigidbody>();
+        GetComponent<MeshCollider>().enabled = true;
         enabled = false;
     }
 
