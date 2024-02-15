@@ -16,8 +16,8 @@ public class levelui : MonoBehaviour
     public Canvas levelselect;
    private bool isLevelSelectActive = false;
     private bool lvl1done =false;
-    private bool lvl2done = false ;
-    private bool lvl3done =false;
+    private bool lvl2done = true ;
+    private bool lvl3done =true;
     
     void Start()
     {
