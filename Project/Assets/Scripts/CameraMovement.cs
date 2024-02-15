@@ -22,7 +22,7 @@ public class CameraMovement : MonoBehaviour
     {
 
         //Remove Before Launch!!!!!
-        if (Input.GetKeyDown(KeyCode.I))
+/*        if (Input.GetKeyDown(KeyCode.I))
         {
             spins = !spins;
         }
@@ -45,7 +45,7 @@ public class CameraMovement : MonoBehaviour
                 cameraMoves = true;
                 Cursor.lockState = CursorLockMode.Locked;
             }
-        }
+        }*/
         if (cameraMoves == true)
         {
             player.Rotate(Vector3.up, Input.GetAxis("Mouse X") * rotationSpeed);
