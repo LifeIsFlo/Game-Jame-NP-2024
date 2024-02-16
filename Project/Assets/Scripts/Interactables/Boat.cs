@@ -51,7 +51,7 @@ public class Boat : MonoBehaviour, IInteractable
     public void Interact(Transform hand, out bool hasSomething)
     {
         hasSomething = false;
-        if(hand.GetChild(0) != null)
+        if(hand.GetChild(0) != null || hand.GetChild(0).tag != "Axe")
         {
             AddLog();
         }

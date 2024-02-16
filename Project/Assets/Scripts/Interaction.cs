@@ -84,6 +84,14 @@ public class Interaction : MonoBehaviour
                     lookText.text = $"Press E to {currentSee.GetComponent<IInteractable>().GetInteraction()} {currentSee.GetComponent<IInteractable>().GetName()}";
                     lookText.transform.parent.gameObject.SetActive(true);
                 }
+                if (currentSee.GetComponent<Hair>())
+                {
+                    lookText.text = currentSee.GetComponent<IInteractable>().GetInteraction();
+                }
+
+
+
+
             }
         }
     }

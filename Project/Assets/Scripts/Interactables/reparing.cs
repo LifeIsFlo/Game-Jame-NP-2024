@@ -86,7 +86,7 @@ public class reparing : MonoBehaviour
     {
         text.gameObject.SetActive(true);
         text.text = "FAIL!";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         canvas.gameObject.SetActive(false);
         canChop = true;
     }

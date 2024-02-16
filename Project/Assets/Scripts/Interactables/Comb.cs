@@ -7,6 +7,9 @@ public class Comb : MonoBehaviour, IInteractable
 {
     Rigidbody rb;
     public bool spinning;
+    [SerializeField]
+    LayerMask luier;
+    public GameObject EndComb;
 
     private void Awake()
     {
@@ -17,16 +20,12 @@ public class Comb : MonoBehaviour, IInteractable
     {
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
-        //transform.localPosition = Vector3.zero;
 
         if (spinning)
         {
@@ -44,7 +43,7 @@ public class Comb : MonoBehaviour, IInteractable
     {
         transform.parent = hand;
         hasSomething = true;
-        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<Collider>().enabled = false;
         enabled = true;
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         Destroy(rb);
@@ -54,13 +53,24 @@ public class Comb : MonoBehaviour, IInteractable
     {
         transform.parent = null;
         this.AddComponent<Rigidbody>();
-        GetComponent<BoxCollider>().enabled = true;
+        GetComponent<Collider>().enabled = true;
         enabled = false;
     }
 
     public void Use()
     {
         spinning = true;
+        RaycastHit hit;// als je een interact met comb doet op haar
+        if (Physics.Raycast(transform.parent.parent.position, transform.parent.parent.forward, out hit, 20, luier))
+        {
+            var boat = hit.transform.GetComponent<Hair>();
+            if (boat)
+            {
+                //dia shit
+                EndComb.SetActive(true);
+                Destroy(gameObject);
+            }
+        }
     }
 
     public string GetName()
