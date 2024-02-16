@@ -12,7 +12,7 @@ public class ChildSleep : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var com = other.gameObject.GetComponentInChildren<SackBullet>();
-
+        FindAnyObjectByType<Sack>().HitChild();
         if (com)
         {
             com.child = this;

@@ -14,18 +14,20 @@ public class reparing : MonoBehaviour
     [SerializeField] private int minPercentage = 40;
     [SerializeField] private int maxPercentage = 60;
     public float treelife = 5;
+    bool canChop;
     public bool isTiming = false;
     private bool left = true;
     bool shouldHit;
     void Start()
     {      
+        canChop = true;
     }
 
     // IInteractable stuff
 
     public void Interact()
     {
-        if (!isTiming)
+        if (!isTiming && canChop)
         {
             everStarted = true;
             isTiming = true;
@@ -37,9 +39,9 @@ public class reparing : MonoBehaviour
     // Damian stuff
     void Update()
     {
-        if (isTiming)
+        if (isTiming && Time.timeScale != 0)
         {
-            text.text = "Now!";
+            text.text = "Click!!";
             if (slider.value == slider.maxValue)
             {
                 left = false;
@@ -50,10 +52,12 @@ public class reparing : MonoBehaviour
             }
             if (left == false)
             {
+                Debug.Log("R" + decreaseRate / Time.deltaTime * speed);
                 slider.value -= decreaseRate / Time.deltaTime * speed;
             }
             if (left == true)
             {
+                Debug.Log("L" + decreaseRate / Time.deltaTime * speed);
                 slider.value += decreaseRate / Time.deltaTime * speed;
             }
 
@@ -84,6 +88,7 @@ public class reparing : MonoBehaviour
         text.text = "FAIL!";
         yield return new WaitForSeconds(2);
         canvas.gameObject.SetActive(false);
+        canChop = true;
     }
 
     public void Hit()
@@ -98,6 +103,7 @@ public class reparing : MonoBehaviour
         {
             isTiming = false;
             treelife = 5f;
+            canChop = false;
             StartCoroutine(StopMiniGame());
         }
     }

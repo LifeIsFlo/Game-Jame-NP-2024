@@ -16,11 +16,12 @@ public class levelui : MonoBehaviour
     public Canvas levelselect;
    private bool isLevelSelectActive = false;
     private bool lvl1done =false;
-    private bool lvl2done = false ;
-    private bool lvl3done =false;
+    private bool lvl2done = true ;
+    private bool lvl3done =true;
     
     void Start()
     {
+        ToggleLevelSelect();
     }
 
     void Update()
@@ -31,14 +32,15 @@ public class levelui : MonoBehaviour
             lvl1done = false; lvl2done = true; lvl3done = true;
         }
 
-            if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            ToggleLevelSelect();
+            //ToggleLevelSelect();
         }
     }
 
-    void ToggleLevelSelect()
+    public void ToggleLevelSelect()
     {
+        Debug.Log("I been called");
         isLevelSelectActive = !isLevelSelectActive;
 
         if (isLevelSelectActive)
