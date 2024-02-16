@@ -88,10 +88,6 @@ public class Interaction : MonoBehaviour
                 {
                     lookText.text = currentSee.GetComponent<IInteractable>().GetInteraction();
                 }
-
-
-
-
             }
         }
     }
