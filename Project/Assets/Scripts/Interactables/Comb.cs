@@ -26,7 +26,7 @@ public class Comb : MonoBehaviour, IInteractable
     }
     void Update()
     {
-
+        transform.localPosition = Vector3.zero;
         if (spinning)
         {
             transform.localRotation = Quaternion.Euler(Vector3.Lerp(transform.localRotation.eulerAngles, new Vector3(0, 360, 0), .05f));

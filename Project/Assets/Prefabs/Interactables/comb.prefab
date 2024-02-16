@@ -141,9 +141,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6154966262304268947}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c32cbc67390f8944930eebf0c711a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spinning: 0
+  luier:
+    serializedVersion: 2
+    m_Bits: 0
+  EndComb: {fileID: 0}

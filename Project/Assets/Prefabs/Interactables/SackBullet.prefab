@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 292855049048379131}
   - component: {fileID: 1206630983466491554}
   - component: {fileID: 6007383656150574304}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4843,7 +4843,7 @@ GameObject:
   - component: {fileID: 7965982429651562133}
   - component: {fileID: -5650353343578948811}
   - component: {fileID: 7958637561261249052}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SackBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
