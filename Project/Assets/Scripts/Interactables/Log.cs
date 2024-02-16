@@ -83,7 +83,7 @@ public class Log : MonoBehaviour, IInteractable
         RaycastHit hit;
         if (Physics.Raycast(transform.parent.parent.position, transform.parent.parent.forward, out hit, maxDistance, layer))
         {
-            if (currentSee.GetComponent<Boat>())
+            if (hit.transform.GetComponent<Boat>())
             {
                 currentSee = hit.transform;
                 sees = true;
