@@ -58,12 +58,13 @@ Material:
   - _ALPHATEST_ON
   - _DISABLE_DECALS
   - _DISABLE_SSR_TRANSPARENT
+  - _DOUBLESIDED_ON
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords:
   - _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
@@ -332,8 +333,8 @@ Material:
     - _ColorMode: 0
     - _ConservativeDepthOffsetEnable: 0
     - _Cull: 0
-    - _CullMode: 2
-    - _CullModeForward: 2
+    - _CullMode: 0
+    - _CullModeForward: 0
     - _Cutoff: 0.458
     - _DepthOffsetEnable: 0
     - _DetailAlbedoMapScale: 1
@@ -350,7 +351,7 @@ Material:
     - _DistortionEnabled: 0
     - _DistortionStrength: 0
     - _DistortionStrengthScaled: 0
-    - _DoubleSidedEnable: 0
+    - _DoubleSidedEnable: 1
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 10
