@@ -91,6 +91,7 @@ public class levelui : MonoBehaviour
             level2.onClick.RemoveListener(lvl2clicked);
             level3.onClick.RemoveListener(lvl3clicked);
             lvl1.SetActive(true);
+            level1.onClick = new Button.ButtonClickedEvent();
         }
     }
 
@@ -107,6 +108,7 @@ public class levelui : MonoBehaviour
             level2.onClick.RemoveListener(lvl2clicked);
             level3.onClick.RemoveListener(lvl3clicked);
             lvl2.SetActive(true);
+            level2.onClick = new Button.ButtonClickedEvent(); ;
         }
     }
 
@@ -123,6 +125,7 @@ public class levelui : MonoBehaviour
             level2.onClick.RemoveListener(lvl2clicked);
             level3.onClick.RemoveListener(lvl3clicked);
             lvl3.SetActive(true);
+            level3.onClick = new Button.ButtonClickedEvent();
         }
     }
 }
