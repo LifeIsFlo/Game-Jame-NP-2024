@@ -8,6 +8,7 @@ public class DialogeScript : MonoBehaviour
 {
     public AudioClip theseusDia;
     public AudioClip sandDia;
+    public AudioClip[] rapDia;
     //Objects n stuff
     [SerializeField] private GameObject audioSource;
     [SerializeField] private GameObject dialogeBox;
@@ -161,5 +162,10 @@ public class DialogeScript : MonoBehaviour
     public void SandStart()
     {
         PlayDialoge(new string[] { null }, new string[] { null }, new AudioClip[] { sandDia}, new float[] { sandDia.length });
+    }
+
+    public void RapStart()
+    {
+        PlayDialoge(new string[] { null, "Wait! You down there! Stranger! Could you do me a favor and find my comb for me?\r\nIm going to need it to keep my hair from being tangled.\r\nit should be somewhere down there.","Find the comb and then press 'LMB' on the hair at the tower"}, new string[] {"", "Rapunzel","New quest"}, rapDia, new float[] { rapDia[0].length, rapDia[1].length,10f });
     }
 }

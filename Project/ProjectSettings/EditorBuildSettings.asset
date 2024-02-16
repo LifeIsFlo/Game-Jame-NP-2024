@@ -5,12 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/OutdoorsScene.unity
-    guid: 8124e5870f4fd4c779e7a5f994e84ad1
   - enabled: 1
-    path: Assets/Scenes/Rudo.unity
-    guid: 55f2b97c911bf744987c11ef3c2e82d3
+    path: Assets/Scenes/MainGame.unity
+    guid: e0e2622c64d70414d876913ff50ff9f7
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b14d8f72bd7a87a43b3ab7c9c836cabb,
       type: 2}

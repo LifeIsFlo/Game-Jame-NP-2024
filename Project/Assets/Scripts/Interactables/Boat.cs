@@ -39,7 +39,7 @@ public class Boat : MonoBehaviour, IInteractable
             gameObject.GetComponent<Collider>().enabled = false;
             boatFix.SetActive(true);
             FindAnyObjectByType<DialogeScript>().PlayDialoge(new string[] { "Thank you for fixing my boat! I can now continue my travels." }, new string[] { "Theseus" }, boatFixClips, new float[] { boatFixClips[0].length });
-            yield return new WaitForSeconds(boatFixClips[0].length);
+            yield return new WaitForSeconds(boatFixClips[0].length + 5f);
             FindAnyObjectByType<levelui>().ToggleLevelSelect();
             FindAnyObjectByType<levelui>().ToggleLevelSelect();
             entireBoatScene.SetActive(false);
