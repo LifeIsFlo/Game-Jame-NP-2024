@@ -26,7 +26,7 @@ public class Comb : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition = Vector3.zero;
+        //transform.localPosition = Vector3.zero;
 
         if (spinning)
         {
